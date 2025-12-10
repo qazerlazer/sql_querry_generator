@@ -2,10 +2,7 @@ import os
 import streamlit as st
 import requests
 import json
-from dotenv import load_dotenv
 
-
-load_dotenv()
 
 st.set_page_config(
     page_title="SQL Query Generator",
@@ -16,11 +13,9 @@ st.title("SQL Query Generator")
 st.markdown("Convert plain English to SQL queries using AI")
 
 
-if "GEMINI_API_KEY" in st.secrets:
-    api_key = st.secrets["GEMINI_API_KEY"]
-else:
-    load_dotenv()
-    api_key = os.getenv("GEMINI_API_KEY")
+
+api_key = st.secrets["GEMINI_API_KEY"]
+
 
 
 
@@ -116,4 +111,5 @@ Respond ONLY with valid JSON in this exact format (no markdown, no extra text):
                 st.code(traceback.format_exc())
 
 st.markdown("---")
+
 st.markdown("**Powered by Google Gemini 2.5 Flash**")
